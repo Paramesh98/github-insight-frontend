@@ -1,0 +1,4 @@
+.gists-card {
+  min-height: calc(100% - 1.5rem);
+  margin-bottom: 1.5rem;
+}
