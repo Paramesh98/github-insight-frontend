@@ -1,4 +1,4 @@
-import { Alert } from 'react-bootstrap';
+import { Alert, Spinner } from 'react-bootstrap';
 import './App.css';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
@@ -19,9 +19,16 @@ function App() {
     <div className='app-container'>
       <Header />
       <div className='container mt-4'>
-        {!!error && <Alert variant={'error'}>{error}</Alert>}
         <SearchBar fetchUserData={fetchUserData} loading={loading} />
-        <GithubUserCard user={data} />
+        {loading && (
+          <div className='d-flex d-flex justify-content-center align-items-center p-3'>
+            <Spinner animation='border' role='status'>
+              <span className='visually-hidden'>Loading...</span>
+            </Spinner>
+          </div>
+        )}
+        {!!error && <Alert variant={'danger'}>{error}</Alert>}
+        {!error && !loading && <GithubUserCard user={data} />}
       </div>
     </div>
   );

@@ -29,12 +29,16 @@ const TabItem = <T extends IRepository | IGist | IOrganization>({
     <>
       {loading && (
         <div className='d-flex d-flex justify-content-center align-items-center p-3'>
-          <Spinner animation='border' role='status'>
+          <Spinner test-id='spinner' animation='border' role='status'>
             <span className='visually-hidden'>Loading...</span>
           </Spinner>
         </div>
       )}
-      {!!error && <Alert variant={'error'}>{error}</Alert>}
+      {!!error && (
+        <Alert data-test-id='alert' variant={'error'}>
+          {error}
+        </Alert>
+      )}
       <PaginatedComponent
         isLoading={loading}
         data={data}

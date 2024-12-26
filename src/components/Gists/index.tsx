@@ -26,11 +26,13 @@ export const Gist = ({ data }: { data: IGist }) => {
   return (
     <Col md={12}>
       <Card className={`mb-4 shadow-sm border-0 ${styles['gists-card']}`}>
-        <CardHeader
-          avatar={data.owner?.avatar_url}
-          url={data?.owner?.html_url}
-          userName={data?.owner?.login}
-        />
+        {!!data?.owner?.avatar_url && !!data?.owner?.html_url && data?.owner?.login && (
+          <CardHeader
+            avatar={data.owner.avatar_url}
+            url={data.owner.html_url}
+            userName={data.owner.login}
+          />
+        )}
         <Card.Body>
           <Row className='mb-3'>
             <Col md={8}>
@@ -72,7 +74,7 @@ export const Gist = ({ data }: { data: IGist }) => {
               {renderMetaInfo(
                 <FaComments className='me-2 text-dark' />,
                 'Comments',
-                data?.comments?.toString()
+                data?.comments?.toString() ?? '-'
               )}
             </Col>
           </Row>
@@ -90,7 +92,7 @@ const Files = ({ data }: { data: IGist }) => {
     <>
       <h6 className='text-dark mb-3'>Files</h6>
       <ListGroup>
-        {!!data.files &&
+        {!!data?.files &&
           Object.keys(data.files).map((fileKey) => (
             <ListGroup.Item
               key={fileKey}

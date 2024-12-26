@@ -12,10 +12,10 @@ export const Repository = ({ data }: { data: IRepository }) => {
     );
   };
 
-  const renderEngagementStats = (icon: JSX.Element, count: number, label: string) => {
+  const renderEngagementStats = (icon: JSX.Element, count: number | undefined, label: string) => {
     return (
       <Col xs={6} sm={3}>
-        {icon} <strong>{count}</strong>
+        {icon} <strong>{count ?? 0}</strong>
         <br />
         <small>{label}</small>
       </Col>
@@ -59,7 +59,7 @@ export const Repository = ({ data }: { data: IRepository }) => {
         <Row className='text-center'>
           {renderEngagementStats(
             <FaStar className='text-warning' />,
-            data.stargazers_count,
+            data?.stargazers_count,
             'Stars'
           )}
 
@@ -86,7 +86,7 @@ export const Repository = ({ data }: { data: IRepository }) => {
         <CardHeader
           avatar={data.owner?.avatar_url}
           url={data?.owner?.html_url}
-          userName={data.owner.login}
+          userName={data?.owner?.login}
         />
 
         <CardBody />

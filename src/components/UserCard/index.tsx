@@ -87,7 +87,7 @@ function GithubUserCard({ user }: { user: User | null }) {
       <Row>
         <Col md={12}>
           <Card className='shadow-lg border-0 mb-4' style={{ overflow: 'hidden' }}>
-            <Row noGutters>
+            <Row>
               <Col
                 md={4}
                 className='d-flex align-items-center justify-content-center p-4 bg-dark text-light'
