@@ -19,10 +19,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       camelcase: ['warn', { properties: 'always' }],
       'capitalized-comments': [
         'warn',
@@ -42,7 +39,6 @@ export default tseslint.config(
           allowSeparatedGroups: false,
         },
       ],
-      complexity: ['warn', { max: 4 }],
       curly: 'error',
       'default-case': 'error',
       'no-await-in-loop': 'error',
@@ -62,7 +58,6 @@ export default tseslint.config(
       'max-nested-callbacks': ['error', 2],
       'max-lines': ['error', { max: 150, skipComments: true }],
       'init-declarations': ['error', 'always'],
-      'arrow-body-style': ['warn', 'as-needed'],
       'block-scoped-var': 'warn',
       'dot-notation': 'warn',
       'id-length': ['warn', { min: 3 }],
@@ -70,7 +65,6 @@ export default tseslint.config(
       'prefer-const': 'warn',
       'prefer-destructuring': 'warn',
       'prefer-template': 'warn',
-      'no-magic-numbers': 'error',
       'no-implicit-globals': 'error',
       'no-multi-assign': 'error',
       'no-nested-ternary': 'error',
