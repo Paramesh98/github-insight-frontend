@@ -60,7 +60,6 @@ export default tseslint.config(
       'init-declarations': ['error', 'always'],
       'block-scoped-var': 'warn',
       'dot-notation': 'warn',
-      'id-length': ['warn', { min: 3 }],
       'no-alert': 'warn',
       'prefer-const': 'warn',
       'prefer-destructuring': 'warn',

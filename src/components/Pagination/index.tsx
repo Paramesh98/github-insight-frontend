@@ -53,7 +53,7 @@ const PaginatedComponent = <T,>({
   return (
     <>
       {!isLoading && (
-        <div className='mb-2'>
+        <div data-test-id='loading' className='mb-2'>
           Showing {Math.min((activePage - intialPage) * itemsPerPage + intialPage, data.length)}-
           {Math.min(activePage * itemsPerPage, data.length)} of {data.length} items
         </div>
