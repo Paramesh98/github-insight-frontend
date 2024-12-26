@@ -67,14 +67,14 @@ export const Organization = ({ data }: { data: IOrganization }) => {
             <FaUsers size={24} className='me-2 text-dark' />,
             'Members',
             'View Members',
-            data.members_url.replace('{/member}', '')
+            data.members_url?.replace('{/member}', '') ?? '-'
           )}
 
           {renderDetail(
             <FaUsers size={24} className='me-2 text-dark' />,
             'Public Members',
             'View Public Members',
-            data.public_members_url.replace('{/member}', '')
+            data.public_members_url?.replace('{/member}', '') ?? '-'
           )}
         </Card.Body>
         <Card.Footer className='d-flex justify-content-between'>
@@ -89,3 +89,5 @@ export const Organization = ({ data }: { data: IOrganization }) => {
     </Col>
   );
 };
+
+export default Organization;
