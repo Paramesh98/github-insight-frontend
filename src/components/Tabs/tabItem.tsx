@@ -17,7 +17,8 @@ const TabItem = <T extends IRepository | IGist | IOrganization>({
   Component,
   title,
 }: ITabItem<T>) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const initialPage = 1;
+  const [currentPage, setCurrentPage] = useState<number>(initialPage);
   const itemsPerPage = 5;
   const url = `${endpoint}?page=${currentPage}&per_page=${itemsPerPage}`;
   const { loading, data, error } = useFetch<T[]>(url);
