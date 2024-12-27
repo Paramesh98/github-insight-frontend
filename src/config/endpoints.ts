@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8081/api';
+const baseUrl = 'https://github-insight-backend.onrender.com/api';
 
 export const endpointForUser = (userName: string): string => {
   return `${baseUrl}/${userName}`;

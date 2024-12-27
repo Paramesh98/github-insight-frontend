@@ -1,4 +1,5 @@
-import { Alert, Spinner } from 'react-bootstrap';
+import { useState } from 'react';
+import { Alert, Container, Spinner } from 'react-bootstrap';
 import useFetch from '../../hooks/useFetch';
 import { IGist } from '../../types/Gists';
 import { IOrganization } from '../../types/Organization';
@@ -16,11 +17,25 @@ const TabItem = <T extends IRepository | IGist | IOrganization>({
   Component,
   title,
 }: ITabItem<T>) => {
-  const { loading, data, error } = useFetch<T[]>(endpoint);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const itemsPerPage = 5;
+  const url = `${endpoint}?page=${currentPage}&per_page=${itemsPerPage}`;
+  const { loading, data, error } = useFetch<T[]>(url);
 
   if (!data) {
     return null;
   }
+
+  if (error) {
+    return (
+      <Container>
+        <Alert data-test-id='alert' variant='danger'>
+          {error}
+        </Alert>
+      </Container>
+    );
+  }
+  const isLastPage = data?.length < itemsPerPage;
 
   const renderItem = (item: T) => {
     return <Component data={item} key={item.id.toString()} />;
@@ -34,17 +49,16 @@ const TabItem = <T extends IRepository | IGist | IOrganization>({
           </Spinner>
         </div>
       )}
-      {!!error && (
-        <Alert data-test-id='alert' variant={'error'}>
-          {error}
-        </Alert>
-      )}
+
       <PaginatedComponent
         isLoading={loading}
         data={data}
         renderItem={renderItem}
-        itemsPerPage={6}
+        itemsPerPage={itemsPerPage}
         title={title}
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        isLastPage={isLastPage}
       />
     </>
   );

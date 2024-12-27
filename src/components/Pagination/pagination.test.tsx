@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import PaginatedComponent from './index';
 
 const mockData = Array.from({ length: 20 }, (_val, index) => `Item ${index + 1}`);
@@ -10,10 +10,13 @@ describe('PaginatedComponent', () => {
     render(
       <PaginatedComponent
         data={[]}
-        itemsPerPage={5}
+        itemsPerPage={20}
         renderItem={renderItem}
         isLoading={false}
         title='Items'
+        currentPage={1}
+        isLastPage={false}
+        setCurrentPage={jest.fn()}
       />
     );
 
@@ -25,15 +28,18 @@ describe('PaginatedComponent', () => {
     render(
       <PaginatedComponent
         data={mockData}
-        itemsPerPage={5}
+        itemsPerPage={20}
         renderItem={renderItem}
         isLoading={false}
         title='Items'
+        currentPage={1}
+        isLastPage={false}
+        setCurrentPage={jest.fn()}
       />
     );
 
     const displayedItems = screen.getAllByText(/Item \d+/);
-    expect(displayedItems).toHaveLength(5);
+    expect(displayedItems).toHaveLength(20);
   });
 
   it('should update the displayed items when a new page is selected', () => {
@@ -44,14 +50,16 @@ describe('PaginatedComponent', () => {
         renderItem={renderItem}
         isLoading={false}
         title='Items'
+        currentPage={1}
+        isLastPage={false}
+        setCurrentPage={jest.fn()}
       />
     );
 
-    const page2Button = screen.getByText('2');
-    fireEvent.click(page2Button);
-
-    const displayedItems = screen.getAllByText(/Item \d+/);
-    expect(displayedItems[0]).toHaveTextContent('Item 6');
+    const nextButton = screen.getAllByText('Next');
+    const prevButton = screen.getAllByText('Previous');
+    expect(nextButton[0]).toBeInTheDocument();
+    expect(prevButton[0]).toBeInTheDocument();
   });
 
   it('should render the pagination component correctly', () => {
@@ -62,25 +70,31 @@ describe('PaginatedComponent', () => {
         renderItem={renderItem}
         isLoading={false}
         title='Items'
+        currentPage={1}
+        isLastPage={false}
+        setCurrentPage={jest.fn()}
       />
     );
 
     const paginationItems = screen.getAllByRole('listitem');
-    expect(paginationItems).toHaveLength(4);
+    expect(paginationItems).toHaveLength(2);
   });
 
   it('should show correct pagination info when items are loaded', () => {
     render(
       <PaginatedComponent
-        data={mockData}
+        data={mockData.slice(0, 5)}
         itemsPerPage={5}
         renderItem={renderItem}
         isLoading={false}
         title='Items'
+        currentPage={1}
+        isLastPage={false}
+        setCurrentPage={jest.fn()}
       />
     );
 
-    const paginationInfo = screen.getByText('Showing 1-5 of 20 items');
+    const paginationInfo = screen.getByText('Showing 1-5 items');
     expect(paginationInfo).toBeInTheDocument();
   });
 });
