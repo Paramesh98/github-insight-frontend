@@ -1,4 +1,4 @@
-name: Github Insight
+name: Build
 
 on:
   pull_request:
