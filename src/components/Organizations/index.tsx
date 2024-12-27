@@ -77,6 +77,7 @@ export const Organization = ({ data }: { data: IOrganization }) => {
             data.public_members_url?.replace('{/member}', '') ?? '-'
           )}
         </Card.Body>
+
         <Card.Footer className='d-flex justify-content-between'>
           <Button variant='outline-primary' href={data.repos_url} target='_blank'>
             Explore Repositories

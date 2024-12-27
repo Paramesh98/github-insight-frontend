@@ -19,13 +19,10 @@ describe('Repository Component', () => {
 
     expect(screen.getByText('Stars')).toBeInTheDocument();
     expect(screen.getByText(mockRepositoryData.stargazers_count.toString())).toBeInTheDocument();
-
     expect(screen.getByText('Forks')).toBeInTheDocument();
     expect(screen.getByText(mockRepositoryData.forks_count.toString())).toBeInTheDocument();
-
     expect(screen.getByText('Open Issues')).toBeInTheDocument();
     expect(screen.getByText(mockRepositoryData.open_issues_count.toString())).toBeInTheDocument();
-
     expect(screen.getByText('Watchers')).toBeInTheDocument();
     expect(screen.getByText(mockRepositoryData.watchers_count.toString())).toBeInTheDocument();
   });
@@ -43,7 +40,6 @@ describe('Repository Component', () => {
 
     const avatarImage = screen.getByRole('img');
     expect(avatarImage).toHaveAttribute('src', mockRepositoryData.owner.avatar_url);
-
     const usernameLink = screen.getByText(mockRepositoryData.owner.login);
     expect(usernameLink).toBeInTheDocument();
   });

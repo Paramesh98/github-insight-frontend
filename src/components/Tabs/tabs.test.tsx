@@ -44,9 +44,7 @@ describe('UserDetailsTab Component', () => {
     expect(screen.getByText('Repositories')).toBeInTheDocument();
     expect(screen.getByText('Gists')).toBeInTheDocument();
     expect(screen.getByText('Organizations')).toBeInTheDocument();
-
     expect(screen.getAllByText('TabItem Component').length).toBeGreaterThan(1);
-
     expect(endPointForRepo).toHaveBeenCalledWith(mockUser.login);
     expect(endPointForGists).toHaveBeenCalledWith(mockUser.login);
     expect(endPointForOrgs).toHaveBeenCalledWith(mockUser.login);

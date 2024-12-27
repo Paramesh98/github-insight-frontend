@@ -19,9 +19,7 @@ describe('CardHeader Component', () => {
     );
 
     const avatarImage: HTMLImageElement = screen.getByAltText('avatar');
-
     expect(avatarImage).toHaveAttribute('src', expect.stringContaining('avatar.png'));
-
     expect(avatarImage).toHaveAttribute('alt', 'avatar');
   });
 
