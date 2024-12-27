@@ -1,4 +1,4 @@
-name: Deploy to Netlify
+name: Build & Deploy Manually
 
 on:
   workflow_dispatch:
