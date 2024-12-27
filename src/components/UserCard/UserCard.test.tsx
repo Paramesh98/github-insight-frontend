@@ -14,14 +14,11 @@ describe('GithubUserCard Component', () => {
 
     expect(screen.getByRole('img')).toHaveAttribute('src', 'http://avatar.url');
     expect(screen.getByText('User')).toBeInTheDocument();
-
     expect(screen.getByText(/Test Company/)).toBeInTheDocument();
     expect(screen.getByText(/Test Location/)).toBeInTheDocument();
     expect(screen.getByText(/testuser/)).toBeInTheDocument();
-
     const button = screen.getByText('Visit GitHub Profile');
     expect(button).toHaveAttribute('href', 'https://github.com/testUser');
-
     expect(screen.getByText('This is a test user bio.')).toBeInTheDocument();
     expect(screen.getByText('Member since: 1/1/2020')).toBeInTheDocument();
   });
