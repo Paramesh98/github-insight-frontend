@@ -36,7 +36,7 @@ const PaginatedComponent = <T,>({
   const getItemRange = (): string => {
     const start = (currentPage - 1) * itemsPerPage + 1;
     const end = start + data.length - 1;
-    return `Showing ${start}-${end} items`;
+    return `Showing ${start} - ${end} items`;
   };
 
   return (
