@@ -32,7 +32,9 @@ function useFetch<T>(initialUrl?: string, initialOptions?: UseFetchOptions): Use
     try {
       const response = await fetch(url, { ...options });
       if (!response.ok) {
-        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+        throw new Error(
+          `Error: ${response.status} - ${response.statusText || 'Please try again later!'}`
+        );
       }
       const result = (await response.json()) as { data: T };
       setData(result.data);
