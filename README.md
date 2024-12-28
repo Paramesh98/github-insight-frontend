@@ -27,7 +27,7 @@ This is the frontend of the web application built with React. The app retrieves 
 
 1. **Clone the repository:**
    ```bash
-   git clone <FRONTEND_REPO_URL>
+   git clone https://github.com/Paramesh98/github-insight-frontend.git
    ```
 2. **Navigate to the project directory:**
    ```bash
