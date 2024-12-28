@@ -35,16 +35,10 @@ This is the frontend of the web application built with React. The app retrieves 
    ```
 3. **Run the development server:**
    ```bash
-   npm start
+   npm run dev
    ```
 
 4. **Access the application:** Open `http://localhost:3000` in your web browser.
-
-### **Configuration**
-
-- API calls for retrieving repositories, gists, and organizations are made via the backend service.
-
-```
 
 ### **Build for Production**
 
