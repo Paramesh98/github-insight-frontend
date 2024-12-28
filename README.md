@@ -46,16 +46,4 @@ To create a production build of the app:
 ```bash
 npm run build
 ```
-
-### **Docker Setup (Optional)**
-
-1. **Build the Docker image:**
-   ```bash
-   docker build -t github-frontend .
-   ```
-2. **Run the container:**
-   ```bash
-   docker run -p 3000:3000 github-frontend
-   ```
-
 ---
