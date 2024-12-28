@@ -29,20 +29,16 @@ This is the frontend of the web application built with React. The app retrieves 
    ```bash
    git clone https://github.com/Paramesh98/github-insight-frontend.git
    ```
-2. **Navigate to the project directory:**
-   ```bash
-   cd frontend
-   ```
-3. **Install dependencies:**
+2. **Install dependencies:**
    ```bash
    npm install
    ```
-4. **Run the development server:**
+3. **Run the development server:**
    ```bash
    npm start
    ```
 
-5. **Access the application:** Open `http://localhost:3000` in your web browser.
+4. **Access the application:** Open `http://localhost:3000` in your web browser.
 
 ### **Configuration**
 
